@@ -52,12 +52,10 @@ body::before {
 }
 
 /* ensure your content stays above dots */
-.app, .hero, .projects, .contact {
+.app, .hero, .skills, .projects, .contact {
   position: relative;
   z-index: 1;
 }
-
-
 
 .app {
   position: relative;
@@ -67,7 +65,6 @@ body::before {
   width: 100%;
   min-height: 100vh;
 }
-
 
 .app.loaded {
   opacity: 1;
@@ -87,7 +84,6 @@ body::before {
   z-index: 1000;
   border-bottom: 1px solid rgba(0,0,0,0.05); /* optional */
 }
-
 
 .logo {
   font-size: 1.5rem;
@@ -131,8 +127,6 @@ body::before {
 }
 
 /* Hero Section */
-
-/* floating circles background */
 .hero {
   min-height: 100vh;
   background: linear-gradient(
@@ -163,8 +157,6 @@ body::before {
   pointer-events: none; 
 } 
 
-
-
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -175,8 +167,6 @@ body::before {
   0% { transform: translate(0,0); }
   100% { transform: translate(-60px,-60px); }
 }
-
-
 
 .hero-container {
   display: flex;
@@ -311,7 +301,6 @@ body::before {
   color: var(--accent-color);
 }
 
-
 .floating-card {
   position: absolute;
   bottom: 2rem;
@@ -380,8 +369,730 @@ body::before {
   }
 }
 
+/* Skills Section */
+.skills {
+  padding: 6rem 5%;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start) 0%,
+    var(--gradient-end) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.skills::before {
+  content: ""; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 200%; 
+  height: 200%; 
+  background-image: 
+  radial-gradient(rgba(0, 0, 0, 0.25) 1.3px, transparent 1px); 
+  background-size: 30px 30px; 
+  animation: moveDots 4s linear infinite; 
+  z-index: 1; /* keep behind hero content */ 
+  pointer-events: none; 
+}
+
+.skills-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.skills-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.skills-header p {
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.skill-card:hover .skill-icon {
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.skill-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skill-card:hover .skill-glow {
+  opacity: 1;
+}
+
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Compact Timeline Section - Fits in One Screen */
+.compact-timeline-section {
+  padding: 4rem 5%;
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.compact-timeline-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveDots 50s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.compact-floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.compact-floating-shape {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.compact-timeline-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  height: 100%;
+}
+
+.compact-timeline-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.compact-timeline-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.compact-timeline-header p {
+  font-size: 1.2rem;
+  color: var(--light-text);
+}
+
+/* Main Grid Layout */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  height: 70vh;
+  max-height: 600px;
+}
+
+/* Left Side - Timeline with Tabs */
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.tab-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(59, 130, 246, 0.2);
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+}
+
+.tab-btn i {
+  font-size: 1.1rem;
+}
+
+/* Timeline Content */
+.compact-timeline-section{
+  padding: 6rem 5%;
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start) 0%,
+    var(--gradient-end) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.compact-timeline-section::before{
+  content: ""; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 200%; 
+  height: 200%; 
+  background-image: 
+  radial-gradient(rgba(0, 0, 0, 0.25) 1.3px, transparent 1px); 
+  background-size: 30px 30px; 
+  animation: moveDots 4s linear infinite; 
+  z-index: 1; /* keep behind hero content */ 
+  pointer-events: none; 
+}
+
+.compact-timeline-content {
+  flex: 1;
+  position: relative;
+  overflow-y: auto;
+  padding-right: 1rem;
+  max-height: 500px;
+}
+
+.compact-timeline-line {
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.timeline-items {
+  position: relative;
+  z-index: 3;
+}
+
+.compact-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.compact-timeline-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 3px solid white;
+  flex-shrink: 0;
+  z-index: 4;
+}
+
+.compact-timeline-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 1.5rem;
+  flex: 1;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.compact-timeline-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.compact-timeline-year {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.compact-timeline-card h3 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.compact-timeline-card h4 {
+  font-size: 1rem;
+  color: var(--accent-color);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.compact-timeline-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--light-text);
+  margin-bottom: 0.8rem;
+}
+
+.compact-timeline-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--light-text);
+  margin-bottom: 0.8rem;
+}
+
+.compact-timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.compact-skill-tag {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--accent-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+/* Right Side - About & Hobbies */
+.timeline-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Compact About Section */
+.compact-about-section {
+  flex: 1;
+}
+
+.compact-about-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.compact-about-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.5rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.3);
+}
+
+.compact-about-card h3 {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.compact-about-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--light-text);
+  margin-bottom: 1.5rem;
+}
+
+.compact-personality-traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.compact-trait-tag {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.2));
+  color: var(--accent-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 2px solid rgba(96, 165, 250, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.compact-fun-fact {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  justify-content: center;
+  color: #92400e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.compact-fun-fact i {
+  font-size: 1.2rem;
+  color: #f59e0b;
+}
 
 
+/* About Section */
+.about-section {
+  margin-bottom: 4rem;
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.about-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: white;
+  box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
+}
+
+.about-card h3 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.about-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--light-text);
+  margin-bottom: 2rem;
+}
+
+.personality-traits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.trait-tag {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(59, 130, 246, 0.2));
+  color: var(--accent-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  border: 2px solid rgba(96, 165, 250, 0.2);
+  transition: all 0.3s ease;
+}
+
+.trait-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.2);
+}
+
+.fun-fact {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.fun-fact i {
+  font-size: 1.5rem;
+  color: #f59e0b;
+}
+
+/* Hobbies Section */
+.hobbies-section h3 {
+  font-size: 2.2rem;
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hobby-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hobby-card:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.hobby-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.8rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.hobby-card h4 {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.hobby-card p {
+  font-size: 0.9rem;
+  color: var(--light-text);
+  line-height: 1.6;
+}
+
+/* Timeline Responsive */
+@media (max-width: 1024px) {
+  .timeline-line {
+    left: 30px;
+  }
+  
+  .timeline-item.left,
+  .timeline-item.right {
+    padding-left: 80px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+  
+  .timeline-item.left .timeline-icon,
+  .timeline-item.right .timeline-icon {
+    left: 0;
+  }
+  
+  .timeline-item.left .timeline-card::before,
+  .timeline-item.right .timeline-card::before {
+    left: -12px;
+    border-right: none;
+    border-top: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .about-card {
+    padding: 2rem;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-header h2 {
+    font-size: 2rem;
+  }
+  
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .personality-traits {
+    justify-content: center;
+  }
+  
+  .trait-tag {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
 
 /* Projects Sections */
 
@@ -397,8 +1108,9 @@ body::before {
 }
 
 .projects::before { 
-  content: ""; position: 
-  absolute; top: 0; 
+  content: ""; 
+  position: absolute; 
+  top: 0; 
   left: 0; 
   width: 200%; 
   height: 200%; 
