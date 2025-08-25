@@ -93,45 +93,6 @@ const aboutData = {
   funFact: "I've built over 50+ projects and contributed to 20+ open source repositories! ✨"
 };
 
-const hobbiesData = [
-  {
-    name: "Coding",
-    icon: "fas fa-code",
-    color: "#3b82f6",
-    description: "Building side projects"
-  },
-  {
-    name: "Photography",
-    icon: "fas fa-camera",
-    color: "#ef4444",
-    description: "Capturing moments"
-  },
-  {
-    name: "Gaming",
-    icon: "fas fa-gamepad",
-    color: "#10b981",
-    description: "Strategy games"
-  },
-  {
-    name: "Reading",
-    icon: "fas fa-book-reader",
-    color: "#f59e0b",
-    description: "Tech blogs & novels"
-  },
-  {
-    name: "Music",
-    icon: "fas fa-music",
-    color: "#8b5cf6",
-    description: "Lo-fi beats"
-  },
-  {
-    name: "Travel",
-    icon: "fas fa-plane",
-    color: "#06b6d4",
-    description: "Exploring places"
-  }
-];
-
 export const Timeline = () => {
   const [activeTab, setActiveTab] = useState('education');
   const [activeData, setActiveData] = useState(educationData);
@@ -215,19 +176,19 @@ export const Timeline = () => {
               </motion.button>
             </div>
 
-            {/* Timeline Content */}
-            <div className="compact-timeline-content">
+            {/* Timeline Content - Static, no scrolling */}
+            <div className="compact-timeline-content-static">
               <motion.div 
-                className="compact-timeline-line"
+                className="compact-timeline-line-static"
                 initial={{ height: 0 }}
-                animate={{ height: "80%" }}
+                animate={{ height: "90%" }}
                 transition={{ duration: 1.5, ease: "easeInOut" }}
               />
 
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  className="timeline-items"
+                  className="timeline-items-static"
                   variants={slideIn}
                   initial="initial"
                   animate="animate"
@@ -236,7 +197,7 @@ export const Timeline = () => {
                   {activeData.map((item, index) => (
                     <motion.div
                       key={index}
-                      className="compact-timeline-item"
+                      className="compact-timeline-item-static"
                       initial={{ opacity: 0, x: -50 }}
                       animate={{ 
                         opacity: 1, 
@@ -247,7 +208,6 @@ export const Timeline = () => {
                     >
                       <motion.div 
                         className="compact-timeline-icon"
-                        //style={{ backgroundColor: item.color }}
                         animate={floatingAnimation}
                         style={{ animationDelay: `${index * 0.3}s`, backgroundColor: item.color }}
                         whileHover={{ rotate: 360, scale: 1.2 }}
@@ -256,7 +216,7 @@ export const Timeline = () => {
                         <i className={item.icon}></i>
                       </motion.div>
                       
-                      <div className="compact-timeline-card">
+                      <div className="compact-timeline-card-static">
                         <span className="compact-timeline-year">{item.year}</span>
                         <h3>{item.title}</h3>
                         <h4>{item.institution}</h4>
@@ -282,7 +242,7 @@ export const Timeline = () => {
             </div>
           </div>
 
-          {/* Right Side - About & Hobbies */}
+          {/* Right Side - About */}
           <div className="timeline-right">
             {/* About Me Section */}
             <motion.div
@@ -334,7 +294,6 @@ export const Timeline = () => {
                 </motion.div>
               </motion.div>
             </motion.div>
-            
           </div>
         </div>
       </div>
